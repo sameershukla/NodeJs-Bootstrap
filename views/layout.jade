@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title= "MEAN Bootstrap"
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+    script(src='/bootstrap/js/bootstrap.min.js')
+    link(rel='stylesheet', href='/bootstrap-table/bootstrap-table.min.css')
+    script(src='/bootstrap-table/bootstrap-table.min.js')
+    script(src='/bootstrap-table/bootstrap-table-filter.min.js')
+  body
+  .bs-example
+    #hide.alert.alert-success(style='display:none')
+        a.close(href='#', data-dismiss='alert') &times;
+
+        strong Success!
+        |  Book Created Successfully.
+.bs-example1
+    #error.alert.alert-danger.alert-error(style='display:none')
+        a.close(href='#', data-dismiss='alert') &times;
+
+        strong Error!
+        |  Book with same name already exists
+.bs-example1
+    #delete.alert.alert-success(style='display:none')
+        a.close(href='#', data-dismiss='alert') &times;
+
+        strong Error!
+        |  Book Deleted From the System
+
+
+    block content

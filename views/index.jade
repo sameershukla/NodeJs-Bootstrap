@@ -1,0 +1,34 @@
+extends layout
+block content
+  div.top
+    form.form-horizontal(method="post", id="loginForm")
+      label Create Book
+      input.span3(id="title", type="text", name="title", placeholder="Enter Bookname")
+      label Author Name
+      input.span3(id="author", type="text", name="author", placeholder="Autor")
+      label Release Date
+      input.span3(id="releaseDate", type="text", name="releaseDate", placeholder="Release Date")
+      br
+      br
+      br
+      input.btn(type="button", id="button", value="Create Book")
+      &nbsp;
+      input.btn(type="button", id="show", value="Show Books")
+      &nbsp;
+      &nbsp;
+      input.btn(type="button", id="deletebtn", value="Delete Book")
+      &nbsp;
+      br
+      br
+      br
+      .table-div
+      table#books.table.table-bordered(data-search='true', data-show-refresh='true', data-show-export='true')
+        thead
+          tr
+            th(data-field='_id') Id
+            th(data-field='title', data-sortable='true') Title
+            th(data-field='author', data-sortable='true') Author
+            th(data-field='releaseDate', data-sortable='true') Release Date
+            th(data-checkbox='true') Action
+  div.footer
+  script(src='/javascripts/crud-ajax.js')
