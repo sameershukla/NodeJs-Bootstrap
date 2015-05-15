@@ -30,19 +30,6 @@ $(document).ready(function(){
          /*Data will be displayed in Bootstrap table*/
          $("#show").click(function(){
            $('#books').bootstrapTable('destroy');
-            /*$.ajax({
-  						type: 'GET',
-              contentType: 'application/json',
-              url: 'http://localhost:3000/api/books',
-                success: function(response) {
-                  console.log(JSON.stringify(response));
-                  alert($('#books').bootstrapTable('getData'))
-                    $('#books').bootstrapTable({
-                      data: response
-                    });//table
-                    //$('#books').bootstrapTable("append", response);
-                  }
-                });*/
                 $('#books').bootstrapTable({
                   url: 'http://localhost:3000/api/books',
                   refresh:true
