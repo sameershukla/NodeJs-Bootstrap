@@ -27,53 +27,50 @@ $(document).ready(function(){
               });
          });
 
+         /*Data will be displayed in Bootstrap table*/
          $("#show").click(function(){
-            $.ajax({
+           $('#books').bootstrapTable('destroy');
+            /*$.ajax({
   						type: 'GET',
               contentType: 'application/json',
               url: 'http://localhost:3000/api/books',
                 success: function(response) {
                   console.log(JSON.stringify(response));
-                  $('#books').bootstrapTable({
-                            data: response
+                  alert($('#books').bootstrapTable('getData'))
+                    $('#books').bootstrapTable({
+                      data: response
                     });//table
+                    //$('#books').bootstrapTable("append", response);
                   }
+                });*/
+                $('#books').bootstrapTable({
+                  url: 'http://localhost:3000/api/books',
+                  refresh:true
                 });
            });
 
+
+           /*On Click of Delete Button a request will be fired to server
+           which removes record from db and immediately removes row from
+           bootstrap table*/
            $("#deletebtn").click(function(){
+             var selects = $('#books').bootstrapTable('getSelections');
+             ids = $.map(selects, function (row) {
+                 return row._id;
+             });
               $.ajax({
     						type: 'DELETE',
                 contentType: 'application/json',
-                url: 'http://localhost:3000/api/books/'+id,
+                url: 'http://localhost:3000/api/books/'+ids,
                   success: function(response) {
                     console.log(JSON.stringify(response));
                     $("#delete").show();
-                    /*$('#books').bootstrapTable('remove', {
+                    $('#books').bootstrapTable('remove', {
                       field: '_id',
-                       values: ids
-                     });*/
-                     $(this).remove();
+                      values: ids
+                    });
                     }
                   });
                   id = '';
              });
-
-           /* click input actions */
-         $('.table').on('check.bs.table', function(e, name, args) {
-            id = name._id
-            /*title=name._title;
-            author=name._author
-            date=name._releaseDate
-            json_data.id = id
-            json_data.title = title;
-            json_data.author = author;
-            json_data.releaseDate=date;*/
-        });
-
-        var selects = $('#books').bootstrapTable('getSelections');
-        ids = $.map(selects, function (row) {
-            return row.id;
-        });
-
      });//end
